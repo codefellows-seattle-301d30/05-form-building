@@ -1,6 +1,7 @@
 'use strict';
 
 let articleView = {};
+let FadeIn_TimeOut = 750;
 
 articleView.populateFilters = () => {
   $('article').each(function() {
@@ -50,7 +51,16 @@ articleView.handleCategoryFilter = () => {
 articleView.handleMainNav = () => {
   $('.main-nav').on('click', '.tab', function() {
     $('.tab-content').hide();
-    $(`#${$(this).data('content')}`).fadeIn();
+    $(`#${$(this).data('content')}`).fadeIn(FadeIn_TimeOut);
+  });
+
+  $('.main-nav .tab:first').click();
+};
+
+articleView.handleNewNav = () => {
+  $('.main-nav-new').on('click', '.tab', function() {
+    $('.tab-content').hide();
+    $(`#${$(this).data('content')}`).fadeIn(FadeIn_TimeOut);
   });
 
   $('.main-nav .tab:first').click();
