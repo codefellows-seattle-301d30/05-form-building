@@ -48,7 +48,7 @@
 
       <section id="write" class="tab-content">
         <h1>Create New Article</h1>
-        <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
+        <!-- DONE: Set up a form to accept user input for a new blog article. Remember that we need:
            1. Article title
            2. Article body
            3. Article author
@@ -80,7 +80,7 @@
       </section>
 
       <section id="article-export">
-        <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only an incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <!-- DONE: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only an incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
         <label id="export-field" class="pull-right" for="article-json">
           <input type="text" readonly id="article-json" >
           When finalized, copy the above JSON, and paste into blogArticles.js.
@@ -99,12 +99,12 @@
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-      // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
+      // DONE: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that initializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
        articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // This function resets the new.html page so it's ready to receive input from the user. It's here so that the reset happens whenever the page loads.
     </script>
   </body>
 </html>
