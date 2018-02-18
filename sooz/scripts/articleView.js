@@ -1,7 +1,7 @@
 'use strict';
 
 let articleView = {};
-let FadeIn_TimeOut = 750;
+let fadeInTimeout = 750;
 
 articleView.populateFilters = () => {
   $('article').each(function() {
@@ -51,7 +51,7 @@ articleView.handleCategoryFilter = () => {
 articleView.handleMainNav = () => {
   $('.main-nav').on('click', '.tab', function() {
     $('.tab-content').hide();
-    $(`#${$(this).data('content')}`).fadeIn(FadeIn_TimeOut);
+    $(`#${$(this).data('content')}`).fadeIn(fadeInTimeout);
   });
 
   $('.main-nav .tab:first').click();
@@ -80,18 +80,18 @@ articleView.initNewArticlePage = () => {
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
   // $('#export-field').hide();
-  $('#article-json').on('focus', function(e){
+  $('#article-json').on('focus', function(){
     $(this).select();
-    $('#article-published:checked').length ? ($('article-json').val(JSON.stringify(article) ) ): null
+    $('#article-published:checked').length ? ($('article-json').val(JSON.stringify(articleView.create) ) ): null
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change', function () {articleView.create)};
+  $('#new-form').on('change', '#new-form', articleView.create());
   articleView.handleMainNav();
 };
 
 // COMMENT: Where is this function called? Why?
-// This function is called on the index.HTML page because the one JS file is used by both the index and new pages. By calling it on the index page, it allows the function to be specific to that page.
+// This function is used as a call back function within the event handler for content being populated into the form. This allows the preview and JSON content to be generated only as content is input into the form and not before. 
 
 articleView.create = () => {
   // DONE: Set up a variable to hold the new article we are creating. (see below)
@@ -119,13 +119,12 @@ articleView.create = () => {
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#export-field').show();
-  $('#article-json').val(JSON.stringify('article', article.toHtml()));
+  $('#article-json').val(JSON.stringify('article', article));
 
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
-
+// This function is called on the index.HTML page because the one JS file is used by both the index and new pages. By calling it on the index page, it allows the function to be specific to that page.
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
