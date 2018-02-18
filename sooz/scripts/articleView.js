@@ -78,21 +78,16 @@ articleView.initNewArticlePage = () => {
   $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
-  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export. 
-  $('#export-field').hide();
+  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
+  // $('#export-field').hide();
   $('#article-json').on('focus', function(e){
     $(this).select();
     $('#article-published:checked').length ? ($('article-json').val(JSON.stringify(article) ) ): null
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('checked : click', '#article-published', function(e){
-    ($(this).text() === /^[\w]$/) ?
-      $(this).parent().find('articles').fadeIn(FadeIn_TimeOut)
-      : $(this).show();
-  });
+  $('#new-form').on('change', function () {articleView.create)};
   articleView.handleMainNav();
-  articleView.create();
 };
 
 // COMMENT: Where is this function called? Why?
@@ -122,9 +117,9 @@ articleView.create = () => {
     hljs.highlightBlock(block);
   });
 
-  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  let articleExport = JSON.stringify('article', article);
-  $('#article-published:checked').length ? $('#article-json').html(articleExport) : null
+  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify('article', article.toHtml()));
 
 };
 
