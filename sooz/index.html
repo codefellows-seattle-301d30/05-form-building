@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>Lab 5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- vendor style sheets -->
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
+
+    <!-- adding vendor style sheet: highlights CSS for use by file -->
+    <link rel="stylesheet" href="vendor/styles/hljs.css">
+
+    <!-- lab style sheets and favicon -->
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
@@ -43,6 +50,7 @@
           <li><a href="http://github.com/brookr" target="_blank" class="icon-github"> GitHub</a></li>
           <li class = "tab" data-content = "write"><a href="/new.html" class="icon-pen">Add an Article</a></li>
         </ul>
+        <p class="breadcrumb">>>> You are currently at our main blog site to see articles and the about section.</p>
       </nav>
     </header>
     <main>
@@ -87,8 +95,8 @@
     <script src="scripts/articleView.js"></script>
     <script>
     // COMMENT: What is this function doing? Why do we need it? Will we need one like it on the new article page that we are creating?
-    // PUT YOUR RESPONSE HERE
-      articleView.initIndexPage();
+    // This funciton is populating the entire index page. We use it to call this method (which has a set of methods inside it) to create the content of the page. Yes we will need this on the new article page as well. 
+    articleView.initIndexPage();
     </script>
   </body>
 </html>

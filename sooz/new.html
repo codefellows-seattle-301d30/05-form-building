@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lab 5</title>
+    <!-- vendor style sheets -->
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="vendor/styles/icons.css">
+
+    <!-- adding vendor style sheet: highlights CSS for use by file -->
     <link rel="stylesheet" href="vendor/styles/hljs.css">
+
+    <!-- lab style sheets and favicon -->
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-    <!-- !!!!!SOOOZ!!!!NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
+    <!-- DONE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
 
     <link rel="stylesheet" href="vendor/styles/railscasts.css">
-    <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
 
-  <script id="article-template" type="text/x-handlebars-template">
-    <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
-      <header>
-        <h1>{{title}}</h1>
-        <div class="byline">
-          By <address><a href="{{authorUrl}}">{{author}}</a></address>
-          {{publishStatus}}
-        </div>
-      </header>
-      <section class="article-body">{{{body}}}</section>
-        <a href="#" class="read-on">Read on &rarr;</a>
-    </article>
-    </script>    
+    <!-- Add favicon to this page too -->
+    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+
+    <!-- DONE: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+
+    <!-- add handlebars template for use by this page to display preview of article that is being entered -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+          <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+      </script>    
     </head>
   <body>
     <header class="site-header clearfix">
@@ -41,11 +51,11 @@
         <div class="icon-menu"></div>
         <ul>
           <!--  IN PROGRESS (stretch goal): In the same way that we enabled tab navigation on index.html, we can do the same on this page utilizing these elements. -->
-          <li class="tab" data-content="home-return" class="icon-home3" ><a href="/index.html">Return to the blog</a></li>
+          <li class="tab" data-content="home"><a href="/index.html" class="icon-home3"> Return Home</a></li>
           <li class="tab" data-content="write"><a href="#" class="icon-pencil2"> Write</a></li>
           <li class="tab" data-content="articles"><a href="#" class="icon-file-text2"> Preview</a></li>
-
         </ul>
+        <p class="breadcrumb">>>> You are currently on the article input and preview page.</p>
       </nav>
     </header>
     <main class="clearfix">
@@ -62,27 +72,28 @@
           x 6. Some way to know if this article is a draft or is published -->
         <form id ="new-form">
           <label>
-            <input type="text" id="article-title" placeholder="Article Title" required>
+            <input type="text" id="article-title" placeholder="Article Title (required)" required>
           </label>
-          <textarea name="body" id="article-body" cols="40" rows="8" required></textarea>
-          <label>
-            <input type="text" id="article-author" palceholder =" Article Author Name (Full)" required>
+          <textarea name="body" id="article-body" cols="40" rows="8" placeholder="Place your article content here (required)" required >Place your article content here</textarea>
+          <label>Article Author (Full) Name (required)
+            <input type="text" id="article-author" palceholder="Article Author (Full) Name (required)" required>
           </label>
-          <label>
-            <input type="text" id="article-authorUrl" palceholder ="URL about Author" required>
+          <label>URL about Author (required in http:// format))
+            <input type="url" id="article-authorUrl" palceholder ="URL about Author (required in http:// format)"required> 
           </label>
-          <label>
-              <input type="text" id="article-category" palceholder ="Article Category" required>
+          <label>Article Category (required)
+              <input type="text" id="article-category" palceholder ="Article Category (required)" required>
             </label>
           <label>
-              <input type="checkbox" id="article-published">Published
+              <input type="checkbox" id="article-published">Published (be sure to check if not a draft)
           </label>
-
         </form>
       </section>
 
       <section id="articles" class="tab-content">
-        <!-- NOTE: This is where we will display our article preview TO DO SHOW USING THIS ID taking values from form, used handlebars and append-->
+        <!-- NOTE: This is where we will display our article preview. -->
+        <!-- TO DO: SHOW USING THIS ID taking values from form, used handlebars and append-->
+
       </section>
 
       <section id="article-export">
@@ -107,12 +118,15 @@
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-      // !!!!!!!!!!!!SOOOOOZZZ !!!!!!!TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
+      // DONE: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
 
+      //Content generation function from articleView.js
+      articleView.initArticleNewPage();
+
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // This funciton is populating the entire index page. We use it to call this method (which has a set of methods inside it) to create the content of the page. Without this function, authors creating articles wouldn't be able to preview their content. 
     </script>
   </body>
 </html>

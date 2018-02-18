@@ -57,19 +57,9 @@ articleView.handleMainNav = () => {
   $('.main-nav .tab:first').click();
 };
 
-articleView.handleNewNav = () => {
-  $('.main-nav-new').on('click', '.tab', function() {
-    $('.tab-content').hide();
-    $(`#${$(this).data('content')}`).fadeIn(FadeIn_TimeOut);
-  });
-
-  $('.main-nav .tab:first').click();
-};
-
 articleView.setTeasers = () => {
   $('.article-body *:nth-of-type(n+2)').hide();
   $('article').on('click', 'a.read-on', function(e) {
-    e.preventDefault();
     if ($(this).text() === 'Read on →') {
       $(this).parent().find('*').fadeIn();
       $(this).html('Show Less &larr;');
@@ -86,19 +76,28 @@ articleView.setTeasers = () => {
 // COMMENT: Where is this function called? Why?
 // PUT YOUR RESPONSE HERE
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export. HINT AT 4:53PM
   $('#export-field').hide();
-
   $('#article-json').on('focus', function(){
     this.select();
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on(event, optional delegation, call back);
+  $('#new-form').on('checked : click', '#article-published', function(e){
+   
+    if ($(this).text() === /^[\w]$/) {
+      $(this).parent().find('articles').fadeIn(FadeIn_TimeOut);
+    } else {
+      $(this).show();
+    }
+    
+  });
+  articleView.handleMainNav();
+  articleView.create();
 
 };
 
@@ -115,12 +114,10 @@ articleView.create = () => {
     author:   $('#article-author').val(),
     authorUrl: $('#article-authorUrl').val(),
     publishedOn: $('#article-published:checked').length ? new Date() : null,
-    //? if true X : fi false; REMEMBER THIS SOOZ!
     body: $('#article-body').val(),
   })
 
   // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
-  $('#articles').append(article.toHtml());
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each(function(i,block){
@@ -133,6 +130,15 @@ articleView.create = () => {
 
 // COMMENT: Where is this function called? Why?
 // PUT YOUR RESPONSE HERE
+articleView.initIndexPage = () => {
+  articles.forEach(article => $('#articles').append(article.toHtml()));
+  articleView.populateFilters();
+  articleView.handleCategoryFilter();
+  articleView.handleAuthorFilter();
+  articleView.handleMainNav();
+  articleView.setTeasers();
+};
+
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();

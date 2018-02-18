@@ -1,3 +1,9 @@
+/* Adding layout for breadcrumb - invisbile to sighted users, available for screen- readers in all navigation */
+.breadcrumb{
+  color: #FFEAAA;
+  size: 1vh;
+}
+/* ==================== */
 .pull-left {
   float: left;
 }
