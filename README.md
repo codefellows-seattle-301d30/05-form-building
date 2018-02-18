@@ -49,6 +49,7 @@ I used IcoMoon icon font for navigation icons. I included the jQuery, Handlebars
 ## Credits and Collaborations
 
 * Thanks to my instructors and TAs and my classmates for great questions during the lab workshop.
+* Special thanks to Jennifer Williams Piper for peer reviewing my code while I was troubleshooting several problems on my new.HTML page.
 * The following libraries were used: jQuery,Highlight JS, Handlebars and Railcast.
 * I referenced the jQuery cheat sheet: https://oscarotero.com/jquery/
 * I used HandleBars library.
