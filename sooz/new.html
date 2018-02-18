@@ -75,31 +75,34 @@
           <label>
             <input type="text" id="article-title" placeholder="Article Title (required)" required>
           </label>
-          <textarea name="body" id="article-body" cols="40" rows="8" placeholder="Place your article content here (required)" required >Place your article content here</textarea>
-          <label>Article Author (Full) Name (required)
+          <textarea name="body" id="article-body" cols="34" rows="8" placeholder="Place your article content here (required)" required></textarea>
+          <label>
             <input type="text" id="article-author" palceholder="Article Author (Full) Name (required)" required>
           </label>
-          <label>URL about Author (required in http:// format))
-            <input type="url" id="article-authorUrl" palceholder ="URL about Author (required in http:// format)"required> 
+          <label>
+            <input type="url" id="article-authorUrl" palceholder ="URL about Author (required in http:// format)" required> 
           </label>
-          <label>Article Category (required)
+          <label>
               <input type="text" id="article-category" palceholder ="Article Category (required)" required>
             </label>
           <label>
-              <input type="checkbox" id="article-published">Published (be sure to check if not a draft)
+              <input type="checkbox" id="article-published"> Published (if no longer a draft)
           </label>
         </form>
       </section>
-
+      <h2>Article Preview (viewable as you enter content into the form above)</p></h2>
       <section id="articles" class="tab-content">
+     
         <!-- NOTE: This is where we will display our article preview. -->
-        <!-- TO DO: SHOW USING THIS ID taking values from form, used handlebars and append-->
+
 
       </section>
 
       <section id="article-export">
-        <!-- THIS RENDERS JS ON SCREEN FOR STUFF article to paste into blogArticles.js
-          TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <!-- THIS RENDERS JS ON SCREEN FOR STUFF article to paste into blogArticles.js -->
+    
+        <!--TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only an incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? --> 
+     
           <label class = "pull-right" id = "export-field" for = "article-json">
             <input type="text" readonly id="article-json">
             When finalized, copy the above JSON, and paste into blogArticles.js.
@@ -124,7 +127,7 @@
       //  Hint: Look in articleView.js for a function that does this.
 
       //Content generation function from articleView.js
-      articleView.initArticleNewPage();
+      articleView.create();
 
       // COMMENT: What is this function doing? Why do we need it?
       // This funciton is populating the entire index page. We use it to call this method (which has a set of methods inside it) to create the content of the page. Without this function, authors creating articles wouldn't be able to preview their content. 

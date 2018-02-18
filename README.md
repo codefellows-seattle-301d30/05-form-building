@@ -53,3 +53,4 @@ I used IcoMoon icon font for navigation icons. I included the jQuery, Handlebars
 * I referenced the jQuery cheat sheet: https://oscarotero.com/jquery/
 * I used HandleBars library.
 * I referenced our text book: Jon Duckett - JavaScript and JQuery.
+* For a reminder on localStorage setting of items, StackOverflow: https://stackoverflow.com/questions/34493531/how-to-store-and-retrieve-json-data-into-local-storage 
