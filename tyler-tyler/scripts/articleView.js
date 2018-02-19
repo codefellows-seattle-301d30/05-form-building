@@ -73,22 +73,25 @@ articleView.setTeasers = () => {
   });
 };
 
-// COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// comment: Where is this function called? Why?
+// It's called at the end of the body tag in new.html so that we can create the necessary elements on that page that we are setting up here in Javascript.
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  console.log('articleView.initNewArticlePage');
+  // todo: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
 
-  // TODO: The new articles we create will be copy/pasted into our source data file.
+  // todo: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
   $('export-field').hide();
 
-  $('#article-json').on('focus', function(){
+  $('#export-field input').on('focus', function(){
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on(event, optionaldelegation, callback);
+  // todo: Add an event handler to update the preview and the export field if any inputs change.
+  // $('#new-form').on(event (i think change or change of focus, maybe just focus), optionaldelegation, articleView.create());
+  // articleView.create();
+  $('#new-form').on('change', 'input', articleView.create);
 };
 
 articleView.create = () => {
@@ -96,33 +99,38 @@ articleView.create = () => {
   // let article;
 
   // Clear out the #articles element, so we can put in the updated preview
-  $('#articles').empty()
+  $('#articles').empty();
 
-  // TODO: Instantiate an article based on what's in the form fields:
+  // todo: Instantiate an article based on what's in the form fields:
   let article = new Article({
     title: $('#article-title').val(),
-    author: $('article-author').val(),
-    // authorUrl:
-    // category:
-    // body:
-    publishedOn: $('article-published:checked').length ? new Date() : null,
-  })
+    author: $('#article-author').val(),
+    body: $('#article-body').val(),
+    category: $('#article-category').val(),
+    authorUrl: $('#article-authorUrl').val(),
+    publishedOn: $('#article-published:checked').length ? new Date() : null,
+  });
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-  $('#articles').article.toHtml();
+  // todo: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  // todo: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each(function(i, block){
     hljs.highlightBlock(block);
   });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-json').val(); // fill something in here to make this a setter. think about what we know about JSON to do this
+  // todo: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  // console.log(article);
+  // console.log(JSON.stringify(article));
+  // console.log(JSON.parse(article));
+  $('#export-field input').val(JSON.stringify(article)+ ',');
+  // $('#article-json').val('test string');
+  // fill something in here to make this a setter. think about what we know about JSON to do this
 
 };
 
-// COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// comment: Where is this function called? Why?
+// this function is called at the end of the HTML after calling the JS files in the body. We put it in a script tag at the end of the body tag so that we can invoke it's blog building powers!
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
