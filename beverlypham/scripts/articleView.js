@@ -74,20 +74,21 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This function is called at the bottom on new.html after the script files are linked to make the page handle any input that gets entered
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  // REVIEW/TO (stretch): Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  $('.tab-content').show();
 
-
-  // TODO: The new articles we create will be copy/pasted into our source data file.
+  // DONE: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
-
+  $('#export-field').hide();
+  // enable highlight entire field on single click
   $('#article-json').on('focus', function(){
     this.select();
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-
+  $('#new-form').on('change', 'input, textarea', articleView.create);
 };
 
 articleView.create = () => {
@@ -100,7 +101,7 @@ articleView.create = () => {
   // DONE: Instantiate an article based on what's in the form fields:
   let article = new Article({
     title: $('#article-title').val(),
-    author: $('#article-body').val(),
+    author: $('#article-author').val(),
     authorUrl: $('#article-authorUrl').val(),
     category: $('#article-category').val(),
     body: $('#article-body').val(),
@@ -115,8 +116,9 @@ articleView.create = () => {
     hljs.highlightBlock(block);
   });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#article-json').val(JSON.stringify(article));
+  $('#export-field').show();
 };
 
 // COMMENT: Where is this function called? Why?
