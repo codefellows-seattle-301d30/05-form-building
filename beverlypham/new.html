@@ -47,13 +47,13 @@
             </label>
             <textarea name="body" id="article-body" cols="40" rows="8" required></textarea>
             <label>
-              <input id="author" type="text" placeholder="Author Name" required>
+              <input id="article-author" type="text" placeholder="Author Name" required>
             </label>
             <label>
-              <input id="authorUrl" type="text" placeholder="Author's URL" required>
+              <input id="article-authorUrl" type="text" placeholder="Author's URL" required>
             </label>
             <label>
-              <input id="category" type="text" placeholder="Category" required>
+              <input id="article-category" type="text" placeholder="Category" required>
             </label>
             <label>
               <input id="article-published" type="checkbox">Published
@@ -88,7 +88,7 @@
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
-
+      articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
       // PUT YOUR RESPONSE HERE
     </script>
