@@ -76,7 +76,7 @@ articleView.setTeasers = () => {
 // COMMENT: Where is this function called? Why?
 // PUT YOUR RESPONSE HERE
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
@@ -88,7 +88,7 @@ articleView.initNewArticlePage = () => {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on(event, option delegation, callback);
+  $('#new-form').on('change', option delegation, callback);
 };
 
 articleView.create = () => {
@@ -96,14 +96,14 @@ articleView.create = () => {
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty();
 
-  // TODO: Instantiate an article based on what's in the form fields:
+  // DONE: Instantiate an article based on what's in the form fields:
   let article = new article({
     title: $('#newArticleTitle').val(),
-    category: '',
-    author: '',
-    authorUrl: '',
+    category: $('#newArticleCategory').val(),
+    author: $('#newArticleAuthor').val(),
+    authorUrl: $('#newArticleAuthorURL').val(),
     publishedOn: $('#newArticleCheckbox:checked').length ? new Date(): null,
-    body: '',
+    body: $('#newArticleBody').val(),
   })
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
@@ -119,7 +119,7 @@ articleView.create = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This is called in index.html to allow for the update of the new articles.
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
