@@ -64,21 +64,14 @@
             <input type="text" id="article-authorUrl" placeholder="Article Author Url" required>
           </label>
           <!-- Category -->
-            <label>
-              <input type="text" id="article-category" placeholder="Article Category" required>
-            </label>
+          <label>
+            <input type="text" id="article-category" placeholder="Article Category" required>
+          </label>
           <!-- Published? -->
           <label>
             <input type="checkbox" id="article-published">Published
           </label>
         </form>
-        <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
-           1. Article title - x
-           2. Article body - x
-           3. Article author - x
-           4. Author's URL
-           5. Article category
-           6. Some way to know if article is a draft or is published - x -->
       </section>
 
       <section id="articles" class="tab-content">
@@ -86,9 +79,9 @@
       </section>
 
       <section id="article-export">
-        <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <!-- todo: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
         <label id="export-field" class="pull-right" for="article-json">
-          <input type="text" readonly id="artcile-json">
+          <input type="text" readonly id="article-json">
           When finalized, copied the above JSON and paste into the blogArticles.js
         </label>
       </section>
@@ -109,6 +102,7 @@
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
 
+      articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
       // PUT YOUR RESPONSE HERE
     </script>
