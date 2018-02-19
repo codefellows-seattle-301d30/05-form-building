@@ -1,7 +1,6 @@
 'use strict';
 
 var rawData = [
-  {"author":"name","authorUrl":"url here","title":"asdfa","category":"category here","body":"body\n","daysAgo":null,"publishStatus":"(draft)"},
   {
     title:       'Bacon Ipsum',
     category:    'food',
