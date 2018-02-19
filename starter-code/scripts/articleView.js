@@ -85,7 +85,9 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
   // DONE: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change', articleView.create);
+  $('#new-form').on('change', function() {
+    articleView.create()
+  });
 };
 
 articleView.create = () => {
@@ -97,7 +99,7 @@ articleView.create = () => {
   // DONE: Instantiate an article based on what's in the form fields:
   let article = new Article({
     title: $('#article-title').val(),
-    author: $('#article-name').val(),
+    author: $('#article-author').val(),
     authorUrl: $('#article-url').val(),
     category: $('#article-category').val(),
     body: $('#article-body').val(),
