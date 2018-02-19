@@ -45,11 +45,27 @@ I used IcoMoon icon font for navigation icons. I included the jQuery, Handlebars
 
 02-17-2018 10:22 pm - Updated README, updated CSS for improved viewing of images. Working on article page functionality (generating preview of article and JSON).
 
+02-18-2018 9:32 am - Updated latest work so it could be peer reviewed by Jennifer Williams Piper.
+
+02-18-2018 10:35 am - Updated work done based on feedback from Jennifer. Things still aren't working.
+
+02-18-2018 1:30pm - Updated work for further review. Things still aren't working.
+
+02-18-2018 2:00pm - Updated work for peer review by Haron Yunis.Things still aren't working.
+
+02-18-2018 2:45pm - Updated work for instructor review by Allie Grampa. Things still aren't working.
+
+02-18-2018 3:30pm - Saved work to-date. Navigation seems to be working but not the dynamic population functionality of the form for article preview and JSON copy paste.
+
+02-18-2018 8:40pm  - Got article preview to show up. Got JSON to work with template literal to add a needed comma. Finished one of two stretch goals (navigation, but not fully highlighting). Got the placeholder text on the form fixed too! Proofed all code. 
+
 
 ## Credits and Collaborations
 
 * Thanks to my instructors and TAs and my classmates for great questions during the lab workshop.
 * Special thanks to Jennifer Williams Piper for peer reviewing my code while I was troubleshooting several problems on my new.HTML page.
+* Special thanks to Haron Yunis for chatting about event handlers with me. 
+* Special thanks to Josiah Green for discussing event handlers with me too!
 * The following libraries were used: jQuery,Highlight JS, Handlebars and Railcast.
 * I referenced the jQuery cheat sheet: https://oscarotero.com/jquery/
 * I used HandleBars library.
