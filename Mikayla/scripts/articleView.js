@@ -87,11 +87,9 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  // DONE: Add an event handler to update the preview and the export field if any inputs change.
   $('#new-form').on('change', function(){
-    $(/*Content here*/).appendTo('#articles');
-    $('.tab-content').show();
-    $('#export-field').show();
+    articleView.create()
   });
 };
 
@@ -120,8 +118,9 @@ articleView.create = () => {
     hljs.highlightBlock(block);
   });
 
-  // Done: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-json').val();
+  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify(article) + ',');
 };
 
 // COMMENT: Where is this function called? Why?
