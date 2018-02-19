@@ -88,7 +88,7 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  // DONE: Add an event handler to update the preview and the export field if any inputs change.
   $('#new-form').on('change', 'input, textarea', function(e) {
     e.preventDefault();
     articleView.create();
@@ -112,10 +112,10 @@ articleView.create = () => {
     publishedOn: $('#article-publishedOn:checked').length ? new Date() : null,
   });
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
+  // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml());
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
@@ -126,6 +126,7 @@ articleView.create = () => {
 
 // COMMENT: Where is this function called? Why?
 // PUT YOUR RESPONSE HERE
+// this function is called in a script tag at the bottom of the index page to properly render blog articles and all other aspects of the index page
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
