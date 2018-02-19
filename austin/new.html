@@ -55,13 +55,29 @@
            5. Article category
            6. Some way to know if this article is a draft or is published -->
            <form id="new-form">
-             <label>
+            <label>
+              Title
               <input type="text" id="article-title" placehoder="Article Title" required>
-             </label>
-             <textarea name="body" id="article-body" cols="40" rows="8"></textarea>
-             <label>
+            </label>
+            <label>
+              Author
+              <input type="text" id="article-author" placehoder="Author" required>
+            </label>
+            <label>
+              Author Url
+              <input type="text" id="article-authorUrl" placehoder="AuthorUrl" required>
+            </label>
+            <label>
+              Category
+              <input type="text" id="article-category" placehoder="category" required>
+            </label>
+            <label>
+              Text Body
+              <textarea name="body" id="article-body" cols="40" rows="8"></textarea>
+            </label>
+            <label>
               <input type="checkbox" id="article-published">Published
-             </label>
+            </label>
            </form>
       </section>
 
@@ -73,10 +89,9 @@
         <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
         <label id="export-field" class="pull-right">
           <input type="text" readonly id="article-json">
-          When finalized, copy the above JSON, and paste into the blogArticles.js
+          When finalized, copy the above JSON, and paste into blogArticles.js
         </label>
       </section>
-
     </main>
     <footer>
       &copy; 2017 Code Fellows | Static Blog | Happy Ipsum!
@@ -89,12 +104,12 @@
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-      // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
+      // DONE: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
       articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // This intitializes all the javascript functionality we need on the page. Without this call, none of the functions would call that allow us to create preveiws and json text.
     </script>
   </body>
 </html>
