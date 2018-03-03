@@ -88,7 +88,7 @@ articleView.initNewArticlePage = () => {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on(event, option delegation, callback);
+  $('#new-form').on('change', 'input, textarea', articleView.create);
 };
 
 articleView.create = () => {
@@ -97,13 +97,13 @@ articleView.create = () => {
   $('#articles').empty();
 
   // TODO: Instantiate an article based on what's in the form fields:
-  let article = new article({
+  let article = new Article({
     title: $('#newArticleTitle').val(),
-    category: '',
-    author: '',
-    authorUrl: '',
+    category: $('#newArticleCategory').val(),
+    author: $('#newArticleBody').val(),
+    authorUrl: $('#newArticleAuthorUrL').val(),
     publishedOn: $('#newArticleCheckbox:checked').length ? new Date(): null,
-    body: '',
+    body: $('#newArticleBody').val(),
   })
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
@@ -115,11 +115,13 @@ articleView.create = () => {
   });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#articleJSON').val(); // not done
+  $('#article-export').show();
+  $('#articleJSON').val(JSON.stringify(article) + ',');
+  
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This called at the bottom of the index.html to be run on page load.
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
