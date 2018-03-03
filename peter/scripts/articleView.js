@@ -74,12 +74,10 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// this function is called in a script tag at the bottom of new.html.
 articleView.initNewArticlePage = () => {
   // Done: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
-  articleView.create();
-
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -89,39 +87,44 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change', articleView.create);
+  // Done: Add an event handler to update the preview and the export field if any inputs change.
+  $('#new-form').on('change', 'input, textarea', function(event) {
+    event.preventDefault();
+    articleView.create();
+    $('#export-field').show();
+  });
 
 };
 
 articleView.create = () => {
   // Done: Set up a variable to hold the new article we are creating.
-  let article;
+
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty();
 
 
   // Done: Instantiate an article based on what's in the form fields:
-  article = new Article({
+  let article = new Article({
     title: $('#article-title').val(),
     author: $('#article-author').val(),
     authorUrl: $('#article-authorUrl').val(),
     category: $('#article-category').val(),
     body: $('#article-body').val(),
     pulishedOn: $('#article-published:checked').length ? new Date(): null,
-  })
+  });
 
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
+  // Done: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml());
 
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  // Done: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#export-field').show();
-  $('#article-json').val(JSON.stringify((article) + ','));
+  // Done: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#article-json').val(JSON.stringify(article));
 
 };
 
