@@ -76,7 +76,7 @@ articleView.setTeasers = () => {
 // COMMENT: Where is this function called? Why?
 // PUT YOUR RESPONSE HERE
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
@@ -95,6 +95,7 @@ articleView.create = () => {
   // TODO: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty();
+
 
   // TODO: Instantiate an article based on what's in the form fields:
   let article = new Article({
@@ -121,7 +122,7 @@ articleView.create = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// This called at the bottom of the index.html to be run on page load.
+// This is called in index.html to allow for the update of the new articles.
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
