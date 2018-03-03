@@ -88,7 +88,7 @@ articleView.initNewArticlePage = () => {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change', option delegation, callback);
+  $('#new-form').on('change', 'input, textarea', articleView.create);
 };
 
 articleView.create = () => {
@@ -96,12 +96,13 @@ articleView.create = () => {
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty();
 
-  // DONE: Instantiate an article based on what's in the form fields:
-  let article = new article({
+
+  // TODO: Instantiate an article based on what's in the form fields:
+  let article = new Article({
     title: $('#newArticleTitle').val(),
     category: $('#newArticleCategory').val(),
-    author: $('#newArticleAuthor').val(),
-    authorUrl: $('#newArticleAuthorURL').val(),
+    author: $('#newArticleBody').val(),
+    authorUrl: $('#newArticleAuthorUrL').val(),
     publishedOn: $('#newArticleCheckbox:checked').length ? new Date(): null,
     body: $('#newArticleBody').val(),
   })
@@ -115,7 +116,9 @@ articleView.create = () => {
   });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#articleJSON').val(); // not done
+  $('#article-export').show();
+  $('#articleJSON').val(JSON.stringify(article) + ',');
+  
 };
 
 // COMMENT: Where is this function called? Why?
