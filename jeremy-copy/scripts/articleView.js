@@ -74,7 +74,7 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// This function is called on the bottom of the new.html page to ensure it is loaded after all other js files ave been loaded since it relies on other code js files to function.
+// this function is called at the bottom of new.html so it shows the preview of the article before posting to the main page.
 articleView.initNewArticlePage = () => {
   // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
   $('.tab-content').show();
@@ -87,11 +87,13 @@ articleView.initNewArticlePage = () => {
   $('#article-json').on('focus', function(){
     this.select();
   });
+
   $('#new-form').on('change', 'input, textarea', articleView.create);
 };
 
 articleView.create = () => {
   // DONE: Set up a variable to hold the new article we are creating.
+
   // Clear out the #articles element, so we can put in the updated preview
   let article;
   $('#articles').empty();
@@ -101,10 +103,10 @@ articleView.create = () => {
     title: $('#article-title').val(),
     author: $('#article-author').val(),
     authorUrl: $('#article-authorUrl').val(),
-    category: $('#article-category').val(),
-    body: $('#article-body').val(),
+    category: $('article-category').val(),
+    body:$('#article-body').val(),
     publishedOn: $('#article-published:checked').length ? new Date() : null
-  });
+  })
 
   // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml());
@@ -114,16 +116,16 @@ articleView.create = () => {
     hljs.highlightBlock(block);
   });
 
-  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#export-field').show();
   $('#article-json').val(`${JSON.stringify(article)},`);
 
 };
 
 // COMMENT: Where is this function called? Why?
-// This function is called on the main index page to ensure it is loaded after all other js files ave been loaded since it relies on other code js files to function.
+// This function is called on the bottom of the index.html page so the page loads when the DOM is ready.
 articleView.initIndexPage = () => {
-  Article.all.forEach(article => $('#articles').append(article.toHtml()));
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
