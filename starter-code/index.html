@@ -86,7 +86,8 @@
     <script src="scripts/articleView.js"></script>
     <script>
     // COMMENT: What is this function doing? Why do we need it? Will we need one like it on the new article page that we are creating?
-    // PUT YOUR RESPONSE HERE
+    // This function is calling articleView.initIndexPage, which is calling all our functions in articleView.js. We need it because otherwise none of our functions will be called, and nothing will work.
+    //This is not necessary for the new article page, because the new article page will not be displaying old articles or the filters.
       articleView.initIndexPage()
     </script>
   </body>
